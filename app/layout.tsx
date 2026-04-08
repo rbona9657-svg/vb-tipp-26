@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   appleWebApp: {
     capable: true,
-    statusBarStyle: "black-translucent",
+    statusBarStyle: "default",
     title: "VB Tipp '26",
   },
   openGraph: {
@@ -50,7 +50,6 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
-  viewportFit: "cover",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
     { media: "(prefers-color-scheme: dark)", color: "#0b0d17" },
@@ -68,22 +67,6 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${poppins.variable} ${ibmPlexMono.variable}`}
     >
-      <head>
-        <style dangerouslySetInnerHTML={{ __html: `
-          .safe-top {
-            padding-top: constant(safe-area-inset-top) !important;
-            padding-top: env(safe-area-inset-top, 0px) !important;
-          }
-          .safe-bottom {
-            padding-bottom: constant(safe-area-inset-bottom) !important;
-            padding-bottom: env(safe-area-inset-bottom, 0px) !important;
-          }
-          .safe-bottom-margin {
-            margin-bottom: constant(safe-area-inset-bottom) !important;
-            margin-bottom: env(safe-area-inset-bottom, 0px) !important;
-          }
-        `}} />
-      </head>
       <body className="min-h-dvh bg-bg-primary text-text-primary antialiased" suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           {children}
