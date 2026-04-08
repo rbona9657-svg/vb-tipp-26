@@ -63,7 +63,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-dvh bg-bg-primary text-text-primary">
       {/* ─── Navbar ─── */}
-      <nav className="sticky top-0 z-50 bg-bg-primary/95 backdrop-blur-sm border-b border-border-subtle">
+      <nav className="sticky top-0 z-50 bg-bg-primary/95 backdrop-blur-sm border-b border-border-subtle safe-top">
         <div className="max-w-6xl mx-auto flex items-center justify-between px-5 h-14">
           <div className="flex items-center gap-2">
             <Image

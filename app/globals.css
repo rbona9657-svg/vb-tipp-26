@@ -145,6 +145,20 @@
   --radius-full: 9999px;
 }
 
+/* ─── iOS PWA safe-area ─── */
+
+.safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.safe-bottom-margin {
+  margin-bottom: env(safe-area-inset-bottom, 0px);
+}
+
 /* ─── Base styles ─── */
 
 body {
