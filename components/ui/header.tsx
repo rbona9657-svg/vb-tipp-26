@@ -1,7 +1,9 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { useTheme } from "next-themes";
-import { Moon, Sun, Trophy } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Avatar } from "./avatar";
 
@@ -12,17 +14,18 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-bg-primary/95 backdrop-blur-sm border-b border-border-subtle">
       <div className="max-w-5xl mx-auto flex items-center justify-between px-4 h-14">
         {/* Brand */}
-        <div className="flex items-center gap-2.5">
-          <Trophy className="w-5 h-5 text-brand-gold" />
-          <div className="flex items-baseline gap-1.5">
-            <span className="text-[11px] font-bold tracking-[2px] text-text-tertiary uppercase">
-              FIFA
-            </span>
-            <span className="font-mono text-[18px] font-bold text-brand-gold">
-              &apos;26
-            </span>
-          </div>
-        </div>
+        <Link href="/" className="flex items-center gap-2">
+          <Image
+            src="/icon-48x48.png"
+            alt="VB Tipp '26"
+            width={32}
+            height={32}
+            className="rounded-[6px]"
+          />
+          <span className="font-mono text-[15px] font-bold text-brand-gold hidden sm:inline">
+            VB Tipp &apos;26
+          </span>
+        </Link>
 
         {/* Squad pill + theme toggle + avatar */}
         <div className="flex items-center gap-3">

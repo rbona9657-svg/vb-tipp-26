@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Trophy,
   Users,
@@ -32,9 +33,16 @@ export default function LandingPage() {
       <nav className="sticky top-0 z-50 bg-bg-primary/95 backdrop-blur-sm border-b border-border-subtle">
         <div className="max-w-6xl mx-auto flex items-center justify-between px-5 h-14">
           <div className="flex items-center gap-2">
-            <Trophy className="w-5 h-5 text-brand-gold" />
-            <span className="text-[11px] font-bold tracking-[2px] text-text-tertiary">FIFA</span>
-            <span className="font-mono text-[18px] font-bold text-brand-gold">&apos;26</span>
+            <Image
+              src="/icon-48x48.png"
+              alt="VB Tipp '26"
+              width={32}
+              height={32}
+              className="rounded-[6px]"
+            />
+            <span className="font-mono text-[15px] font-bold text-brand-gold">
+              VB Tipp &apos;26
+            </span>
           </div>
           <div className="flex items-center gap-3">
             <Link
@@ -69,6 +77,15 @@ export default function LandingPage() {
           </div>
 
           <div className="relative max-w-4xl mx-auto px-5 pt-16 pb-20 text-center">
+            <Image
+              src="/images/logo.jpg"
+              alt="Original TrollFoci"
+              width={320}
+              height={140}
+              className="mx-auto mb-6 rounded-[var(--radius-lg)]"
+              priority
+            />
+
             <div className="inline-flex items-center gap-2 bg-white/8 border border-white/10 rounded-full px-4 py-1.5 mb-6">
               <Zap className="w-3.5 h-3.5 text-brand-gold-light" />
               <span className="text-[12px] font-medium text-white/70">
@@ -361,7 +378,13 @@ export default function LandingPage() {
       <footer className="border-t border-border-subtle">
         <div className="max-w-6xl mx-auto px-5 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <Trophy className="w-4 h-4 text-brand-gold" />
+            <Image
+              src="/icon-32x32.png"
+              alt="VB Tipp '26"
+              width={20}
+              height={20}
+              className="rounded-[3px]"
+            />
             <span className="text-[12px] font-bold tracking-[1.5px] text-text-tertiary">
               VB TIPP &apos;26
             </span>
