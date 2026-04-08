@@ -138,7 +138,7 @@ export const SQUAD_MEMBERS: Player[] = [
 ];
 
 export const RIVAL_SQUADS: Squad[] = [
-  { name: "AI Hungary FC", logo: "⚡", members: 6, pts: 4733, rank: 1 },
+  { name: "powered by AI Hungary", logo: "⚡", members: 6, pts: 4733, rank: 1 },
   { name: "Passport Pub XI", logo: "🍺", members: 8, pts: 4680, rank: 2 },
   { name: "Debuggerek", logo: "🐛", members: 5, pts: 4512, rank: 3 },
   { name: "DevOps United", logo: "🚀", members: 7, pts: 4201, rank: 4 },

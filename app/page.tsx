@@ -226,7 +226,7 @@ export default function LandingPage() {
                     <p className="text-[11px] text-white/40 font-medium uppercase tracking-wider mb-0.5">
                       Csapatnév
                     </p>
-                    <p className="text-[20px] font-bold text-white">AI Hungary FC</p>
+                    <p className="text-[20px] font-bold text-white">powered by AI Hungary</p>
                     <div className="flex items-center gap-1.5 mt-1">
                       <span className="text-[10px]">⚡</span>
                       <span className="text-[11px] text-white/50">6 tag &middot; Admin: Richard</span>
@@ -340,7 +340,7 @@ export default function LandingPage() {
             </div>
 
             {[
-              { rank: 1, name: "AI Hungary FC", logo: "⚡", top3: "2,457", color: "text-medal-gold" },
+              { rank: 1, name: "powered by AI Hungary", logo: "⚡", top3: "2,457", color: "text-medal-gold" },
               { rank: 2, name: "Passport Pub XI", logo: "🍺", top3: "2,380", color: "text-medal-silver" },
               { rank: 3, name: "Debuggerek", logo: "🐛", top3: "2,312", color: "text-medal-bronze" },
               { rank: 4, name: "DevOps United", logo: "🚀", top3: "2,201", color: "text-text-tertiary" },

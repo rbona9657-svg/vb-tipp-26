@@ -31,7 +31,7 @@ export function Header() {
         <div className="flex items-center gap-3">
           <div className="hidden sm:flex items-center gap-2 bg-bg-secondary rounded-full px-3 py-1.5">
             <span className="text-[11px]">⚡</span>
-            <span className="text-[12px] font-medium text-text-secondary">AI Hungary FC</span>
+            <span className="text-[12px] font-medium text-text-secondary">powered by AI Hungary</span>
             <span className="w-1.5 h-1.5 rounded-full bg-success" />
           </div>
 
