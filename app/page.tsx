@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -25,7 +26,39 @@ const FLAG_LOOP = Object.values(TEAMS)
   .slice(0, 24);
 
 export default function LandingPage() {
-  const [activeStep, setActiveStep] = useState(0);
+  const [teamName, setTeamName] = useState("");
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState<{
+    success: boolean;
+    squad?: { name: string; inviteCode: string };
+    error?: string;
+  } | null>(null);
+  const router = useRouter();
+
+  async function handleRegister() {
+    if (!teamName.trim() || !email.trim() || !name.trim()) return;
+    setLoading(true);
+    setResult(null);
+    try {
+      const res = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ teamName, email, name }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setResult({ success: false, error: data.error });
+      } else {
+        setResult({ success: true, squad: data.squad });
+      }
+    } catch {
+      setResult({ success: false, error: "Hálózati hiba történt" });
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <div className="min-h-dvh bg-bg-primary text-text-primary">
@@ -347,30 +380,72 @@ export default function LandingPage() {
             tippelni a 2026-os Világbajnokságra.
           </p>
 
-          {/* Registration form placeholder */}
-          <div className="max-w-sm mx-auto space-y-3">
-            <input
-              type="text"
-              placeholder="Csapatnév"
-              className="w-full h-12 px-4 rounded-[var(--radius-sm)] bg-white/8 border border-white/12 text-white placeholder:text-white/30 text-[14px] outline-none focus:border-brand-gold transition-colors"
-            />
-            <input
-              type="email"
-              placeholder="Admin e-mail cím"
-              className="w-full h-12 px-4 rounded-[var(--radius-sm)] bg-white/8 border border-white/12 text-white placeholder:text-white/30 text-[14px] outline-none focus:border-brand-gold transition-colors"
-            />
-            <input
-              type="text"
-              placeholder="Neved"
-              className="w-full h-12 px-4 rounded-[var(--radius-sm)] bg-white/8 border border-white/12 text-white placeholder:text-white/30 text-[14px] outline-none focus:border-brand-gold transition-colors"
-            />
-            <button className="w-full h-12 rounded-[var(--radius-sm)] bg-brand-gold text-white text-[15px] font-semibold hover:bg-brand-gold-hover transition-all active:scale-[0.97] cursor-pointer">
-              Csapat létrehozása
-            </button>
-            <p className="text-[11px] text-white/30">
-              A regisztráció után e-maillel hívhatod meg a csapattagokat
-            </p>
-          </div>
+          {/* Registration form */}
+          {result?.success ? (
+            <div className="max-w-sm mx-auto animate-scale-in">
+              <div className="bg-white/8 border border-white/12 rounded-[var(--radius-xl)] p-6 space-y-4">
+                <div className="w-12 h-12 rounded-full bg-success/20 flex items-center justify-center mx-auto">
+                  <Trophy className="w-6 h-6 text-success" />
+                </div>
+                <h3 className="text-[18px] font-bold">Csapat létrehozva!</h3>
+                <p className="text-[14px] text-white/60">
+                  <strong className="text-white">{result.squad?.name}</strong> sikeresen regisztrálva.
+                </p>
+                <div className="bg-white/5 rounded-[var(--radius-sm)] p-4">
+                  <p className="text-[11px] text-white/40 uppercase tracking-wider mb-1">Meghívó kód</p>
+                  <p className="font-mono text-[24px] font-bold text-brand-gold-light tracking-[4px]">
+                    {result.squad?.inviteCode}
+                  </p>
+                  <p className="text-[11px] text-white/40 mt-2">
+                    Oszd meg ezt a kódot a barátaiddal, hogy csatlakozhassanak
+                  </p>
+                </div>
+                <button
+                  onClick={() => router.push("/dashboard")}
+                  className="w-full h-12 rounded-[var(--radius-sm)] bg-brand-gold text-white text-[15px] font-semibold hover:bg-brand-gold-hover transition-all active:scale-[0.97] cursor-pointer"
+                >
+                  Tovább a tippeléshez
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="max-w-sm mx-auto space-y-3">
+              <input
+                type="text"
+                placeholder="Csapatnév"
+                value={teamName}
+                onChange={(e) => setTeamName(e.target.value)}
+                className="w-full h-12 px-4 rounded-[var(--radius-sm)] bg-white/8 border border-white/12 text-white placeholder:text-white/30 text-[14px] outline-none focus:border-brand-gold transition-colors"
+              />
+              <input
+                type="email"
+                placeholder="Admin e-mail cím"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full h-12 px-4 rounded-[var(--radius-sm)] bg-white/8 border border-white/12 text-white placeholder:text-white/30 text-[14px] outline-none focus:border-brand-gold transition-colors"
+              />
+              <input
+                type="text"
+                placeholder="Neved"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full h-12 px-4 rounded-[var(--radius-sm)] bg-white/8 border border-white/12 text-white placeholder:text-white/30 text-[14px] outline-none focus:border-brand-gold transition-colors"
+              />
+              <button
+                onClick={handleRegister}
+                disabled={loading || !teamName.trim() || !email.trim() || !name.trim()}
+                className="w-full h-12 rounded-[var(--radius-sm)] bg-brand-gold text-white text-[15px] font-semibold hover:bg-brand-gold-hover transition-all active:scale-[0.97] cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                {loading ? "Létrehozás..." : "Csapat létrehozása"}
+              </button>
+              {result?.error && (
+                <p className="text-[13px] text-red-400 animate-fade-in">{result.error}</p>
+              )}
+              <p className="text-[11px] text-white/30">
+                A regisztráció után e-maillel hívhatod meg a csapattagokat
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
