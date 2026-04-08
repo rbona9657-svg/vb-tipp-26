@@ -1,26 +1,248 @@
 @import "tailwindcss";
 
+/* ─── Airbnb-Inspired Design Tokens for VB Tipp '26 ─── */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Backgrounds */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7f7f7;
+  --bg-tertiary: #ebebeb;
+
+  /* Text – warm, never pure black */
+  --text-primary: #222222;
+  --text-secondary: #6a6a6a;
+  --text-tertiary: #9a9a9a;
+  --text-disabled: rgba(0, 0, 0, 0.24);
+  --text-inverse: #ffffff;
+
+  /* Brand – Gold as singular CTA accent (like Airbnb's Rausch Red) */
+  --brand-gold: #c9952a;
+  --brand-gold-hover: #b8861f;
+  --brand-gold-light: #f2d06b;
+  --brand-gold-bg: rgba(201, 149, 42, 0.08);
+  --brand-gold-bg-strong: rgba(201, 149, 42, 0.16);
+
+  /* FIFA identity colors – used sparingly */
+  --fifa-blue: #326eb4;
+  --fifa-blue-bg: rgba(50, 110, 180, 0.08);
+  --fifa-navy: #0b0d17;
+
+  /* Semantic */
+  --success: #3cac3b;
+  --success-bg: rgba(60, 172, 59, 0.08);
+  --error: #c13515;
+  --error-bg: rgba(193, 53, 21, 0.08);
+  --warning: #e0a200;
+  --warning-bg: rgba(224, 162, 0, 0.08);
+  --info: #428bff;
+
+  /* Surfaces & borders */
+  --border-default: #dddddd;
+  --border-strong: #c1c1c1;
+  --border-subtle: #ebebeb;
+  --surface-hover: rgba(0, 0, 0, 0.04);
+  --surface-active: rgba(0, 0, 0, 0.06);
+
+  /* Shadows – Airbnb three-layer system */
+  --shadow-card: rgba(0, 0, 0, 0.02) 0px 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 2px 6px, rgba(0, 0, 0, 0.08) 0px 4px 8px;
+  --shadow-hover: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  --shadow-elevated: rgba(0, 0, 0, 0.06) 0px 6px 20px;
+  --shadow-focus: 0 0 0 2px var(--brand-gold);
+
+  /* Radii – Airbnb scale */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 32px;
+  --radius-full: 9999px;
+
+  /* Medal colors */
+  --medal-gold: #d4a843;
+  --medal-silver: #9ca3af;
+  --medal-bronze: #cd7f32;
 }
+
+/* Dark mode – FIFA navy palette */
+.dark {
+  --bg-primary: #0b0d17;
+  --bg-secondary: #141729;
+  --bg-tertiary: #1c2038;
+
+  --text-primary: rgba(255, 255, 255, 0.92);
+  --text-secondary: rgba(255, 255, 255, 0.64);
+  --text-tertiary: rgba(255, 255, 255, 0.40);
+  --text-disabled: rgba(255, 255, 255, 0.20);
+  --text-inverse: #222222;
+
+  --brand-gold: #d4a843;
+  --brand-gold-hover: #f2d06b;
+  --brand-gold-light: #f2d06b;
+  --brand-gold-bg: rgba(212, 168, 67, 0.12);
+  --brand-gold-bg-strong: rgba(212, 168, 67, 0.20);
+
+  --border-default: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --surface-hover: rgba(255, 255, 255, 0.06);
+  --surface-active: rgba(255, 255, 255, 0.10);
+
+  --shadow-card: rgba(0, 0, 0, 0.3) 0px 0px 0px 1px, rgba(0, 0, 0, 0.2) 0px 2px 6px, rgba(0, 0, 0, 0.3) 0px 4px 8px;
+  --shadow-hover: rgba(0, 0, 0, 0.4) 0px 4px 12px;
+  --shadow-elevated: rgba(0, 0, 0, 0.5) 0px 6px 20px;
+}
+
+/* ─── Tailwind v4 @theme ─── */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+
+  --color-brand-gold: var(--brand-gold);
+  --color-brand-gold-hover: var(--brand-gold-hover);
+  --color-brand-gold-light: var(--brand-gold-light);
+  --color-brand-gold-bg: var(--brand-gold-bg);
+
+  --color-fifa-blue: var(--fifa-blue);
+  --color-fifa-blue-bg: var(--fifa-blue-bg);
+  --color-fifa-navy: var(--fifa-navy);
+
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
+  --color-error: var(--error);
+  --color-error-bg: var(--error-bg);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+
+  --color-border-default: var(--border-default);
+  --color-border-strong: var(--border-strong);
+  --color-border-subtle: var(--border-subtle);
+  --color-surface-hover: var(--surface-hover);
+  --color-surface-active: var(--surface-active);
+
+  --color-medal-gold: var(--medal-gold);
+  --color-medal-silver: var(--medal-silver);
+  --color-medal-bronze: var(--medal-bronze);
+
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --shadow-card: var(--shadow-card);
+  --shadow-hover: var(--shadow-hover);
+  --shadow-elevated: var(--shadow-elevated);
+  --shadow-focus: var(--shadow-focus);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 32px;
+  --radius-full: 9999px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* ─── Base styles ─── */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Heading letter-spacing – Airbnb tight tracking */
+h1, h2, h3 {
+  letter-spacing: -0.32px;
+}
+
+h4, h5 {
+  letter-spacing: -0.18px;
+}
+
+/* Score/number font */
+.font-score {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Scrollbar styling for category pills */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition-property: background-color, border-color, color;
+  transition-duration: 150ms;
+  transition-timing-function: ease;
+}
+
+/* Disable transitions on page load */
+.no-transitions * {
+  transition: none !important;
+}
+
+/* ─── Micro-animations ─── */
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.2s ease-out;
+}
+
+/* Stagger children animation */
+.stagger-children > * {
+  animation: fade-in 0.3s ease-out both;
+}
+.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 50ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 100ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 150ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 200ms; }
+.stagger-children > *:nth-child(6) { animation-delay: 250ms; }
+.stagger-children > *:nth-child(7) { animation-delay: 300ms; }
+.stagger-children > *:nth-child(8) { animation-delay: 350ms; }
+
+/* Button press effect */
+button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+/* Card hover lift (Airbnb pattern) */
+.card-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
 }
