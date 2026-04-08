@@ -13,7 +13,7 @@ export function Header() {
   return (
     <header
       className="sticky top-0 z-50 bg-bg-primary/95 backdrop-blur-sm border-b border-border-subtle"
-      style={{ paddingTop: "var(--sat, 0px)" }}
+      style={{ paddingTop: 60 }}
     >
       <div className="max-w-5xl mx-auto flex items-center justify-between px-4 h-14">
         {/* Brand */}
