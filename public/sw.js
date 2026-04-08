@@ -1,4 +1,4 @@
-const CACHE_NAME = "vb-tipp-26-v2";
+const CACHE_NAME = "vb-tipp-26-v3";
 
 const PRECACHE_URLS = [
   "/",

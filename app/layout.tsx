@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Poppins, IBM_Plex_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { ServiceWorkerRegister } from "@/components/sw-register";
+import { IOSSafeArea } from "@/components/ios-safe-area";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
   },
   appleWebApp: {
     capable: true,
-    statusBarStyle: "default",
+    statusBarStyle: "black-translucent",
     title: "VB Tipp '26",
   },
   openGraph: {
@@ -50,6 +51,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
+  viewportFit: "cover",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
     { media: "(prefers-color-scheme: dark)", color: "#0b0d17" },
@@ -72,6 +74,7 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         <ServiceWorkerRegister />
+        <IOSSafeArea />
       </body>
     </html>
   );
