@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Poppins, IBM_Plex_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { ServiceWorkerRegister } from "@/components/sw-register";
-import { IOSSafeArea } from "@/components/ios-safe-area";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -74,7 +73,6 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         <ServiceWorkerRegister />
-        <IOSSafeArea />
       </body>
     </html>
   );
