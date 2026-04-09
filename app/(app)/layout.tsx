@@ -6,7 +6,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     <div className="min-h-dvh flex flex-col">
       <Header />
       <main
-        className="flex-1 pb-20"
+        className="flex-1 pb-24"
         style={{ marginBottom: "env(safe-area-inset-bottom)" }}
       >
         {children}

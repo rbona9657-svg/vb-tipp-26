@@ -5,9 +5,12 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar } from "@/components/ui/avatar";
-import { Countdown } from "@/components/ui/countdown";
+import { FlipCountdown } from "@/components/ui/flip-countdown";
+import { LiveDot } from "@/components/ui/live-dot";
 import { MatchCard } from "@/components/ui/match-card";
 import { MATCHES, SQUAD_MEMBERS } from "@/lib/data";
+
+const KICKOFF = new Date("2026-06-11T19:00:00Z");
 
 export default function DashboardPage() {
   const nextMatches = MATCHES.slice(0, 3);
@@ -16,22 +19,32 @@ export default function DashboardPage() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-6 space-y-6">
       {/* Hero countdown */}
-      <Card className="overflow-hidden">
-        <div className="relative bg-gradient-to-br from-[#0b0d17] to-[#1c2038] px-6 py-8 text-center">
-          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_0%,_rgba(212,168,67,0.3),_transparent_70%)]" />
+      <Card variant="elevated" className="overflow-hidden animate-fade-in">
+        <div
+          className="relative px-6 py-10 text-center"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 0%, rgba(255,204,0,0.08), transparent 65%), radial-gradient(circle at 50% 100%, rgba(16,184,110,0.10), transparent 60%), linear-gradient(180deg, #032B1E 0%, #021912 100%)",
+          }}
+        >
           <div className="relative">
-            <div className="flex items-center justify-center gap-2 mb-1">
-              <Trophy className="w-5 h-5 text-brand-gold-light" />
-              <span className="text-[11px] font-bold tracking-[3px] text-white/50 uppercase">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <Trophy className="w-4 h-4 text-yellow-400" />
+              <span className="font-display font-extrabold text-[11px] tracking-[3px] text-text-tertiary uppercase">
                 FIFA World Cup
               </span>
+              <LiveDot variant="yellow" size="xs" />
             </div>
-            <h1 className="text-[28px] font-bold text-white mb-1">2026</h1>
-            <p className="text-[13px] text-white/60 mb-5">
+            <h1 className="font-display font-black text-[44px] sm:text-[52px] leading-none tracking-tight text-text-primary mb-2">
+              2026
+            </h1>
+            <p className="text-[13px] text-text-tertiary mb-8 font-medium">
               USA &middot; Mexikó &middot; Kanada
             </p>
-            <Countdown />
-            <p className="text-[11px] text-white/40 mt-4">a nyitómeccsig</p>
+            <FlipCountdown target={KICKOFF} showSeconds />
+            <p className="text-[11px] text-text-tertiary mt-5 font-medium uppercase tracking-[1px]">
+              a nyitómeccsig
+            </p>
           </div>
         </div>
       </Card>
