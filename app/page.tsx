@@ -74,7 +74,7 @@ export default function LandingPage() {
         style={{ paddingTop: "env(safe-area-inset-top)" }}
       >
         <div className="max-w-6xl mx-auto flex items-center justify-between px-5 h-14">
-          <Link href="/" className="flex items-center gap-2.5">
+          <Link href="/" className="flex items-center gap-2.5 shrink-0">
             <Image
               src="/icon-192x192.png?v=ziccer3"
               alt="Ziccer Tipper"
@@ -83,7 +83,7 @@ export default function LandingPage() {
               className="rounded-[6px]"
               unoptimized
             />
-            <span className="font-display font-extrabold text-[15px] text-text-primary tracking-tight">
+            <span className="hidden sm:inline font-display font-extrabold text-[15px] text-text-primary tracking-tight whitespace-nowrap">
               ZICCER <span className="text-yellow-400">TIPPER</span>
             </span>
           </Link>
