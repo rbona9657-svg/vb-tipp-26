@@ -53,7 +53,7 @@ export const viewport: Viewport = {
   viewportFit: "cover",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0b0d17" },
+    { media: "(prefers-color-scheme: dark)", color: "#021912" },
   ],
 };
 
@@ -69,7 +69,12 @@ export default function RootLayout({
       className={`${poppins.variable} ${ibmPlexMono.variable}`}
     >
       <body className="min-h-dvh bg-bg-primary text-text-primary antialiased" suppressHydrationWarning>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
           {children}
         </ThemeProvider>
         <ServiceWorkerRegister />

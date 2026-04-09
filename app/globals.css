@@ -1,145 +1,246 @@
 @import "tailwindcss";
 
-/* ─── Airbnb-Inspired Design Tokens for Ziccer Tipper ─── */
+/* ─── Ziccer Tipper — bet365-inspired Design Tokens ─── */
+/* Dark-first. Stadium green + electric yellow. Never Ordinary. */
 
 :root {
-  /* Backgrounds */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f7f7f7;
-  --bg-tertiary: #ebebeb;
+  /* ─── Primary: Stadium Green ─── */
+  --green-950: #021912;
+  --green-900: #032B1E;
+  --green-800: #054030;
+  --green-700: #076344;
+  --green-600: #0A8555;
+  --green-500: #10B86E;
+  --green-400: #34D98F;
 
-  /* Text – warm, never pure black */
-  --text-primary: #222222;
-  --text-secondary: #6a6a6a;
-  --text-tertiary: #9a9a9a;
-  --text-disabled: rgba(0, 0, 0, 0.24);
-  --text-inverse: #ffffff;
+  /* ─── Accent: Electric Yellow (CTA / odds pop) ─── */
+  --yellow-400: #FFE14A;
+  --yellow-500: #FFCC00;
+  --yellow-600: #E6B800;
+  --yellow-glow: rgba(255, 204, 0, 0.40);
+  --yellow-bg: rgba(255, 204, 0, 0.08);
+  --yellow-bg-strong: rgba(255, 204, 0, 0.18);
 
-  /* Brand – Gold as singular CTA accent (like Airbnb's Rausch Red) */
-  --brand-gold: #c9952a;
-  --brand-gold-hover: #b8861f;
-  --brand-gold-light: #f2d06b;
-  --brand-gold-bg: rgba(201, 149, 42, 0.08);
-  --brand-gold-bg-strong: rgba(201, 149, 42, 0.16);
+  /* ─── Status ─── */
+  --live-red: #FF3B3B;
+  --live-red-glow: rgba(255, 59, 59, 0.35);
+  --live-red-bg: rgba(255, 59, 59, 0.10);
+  --up: #10B86E;
+  --up-bg: rgba(16, 184, 110, 0.12);
+  --down: #FF6B6B;
+  --down-bg: rgba(255, 107, 107, 0.12);
 
-  /* FIFA identity colors – used sparingly */
-  --fifa-blue: #326eb4;
-  --fifa-blue-bg: rgba(50, 110, 180, 0.08);
-  --fifa-navy: #0b0d17;
+  /* ─── Backgrounds / Surfaces (layered, dark-first) ─── */
+  --bg-primary: var(--green-950);    /* page */
+  --bg-secondary: var(--green-900);  /* cards */
+  --bg-tertiary: var(--green-800);   /* elevated surfaces */
+  --surface-0: var(--green-950);
+  --surface-1: var(--green-900);
+  --surface-2: var(--green-800);
+  --surface-3: #0A4A34;              /* modals, pressed states */
 
-  /* Semantic */
-  --success: #3cac3b;
-  --success-bg: rgba(60, 172, 59, 0.08);
-  --error: #c13515;
-  --error-bg: rgba(193, 53, 21, 0.08);
-  --warning: #e0a200;
-  --warning-bg: rgba(224, 162, 0, 0.08);
-  --info: #428bff;
-
-  /* Surfaces & borders */
-  --border-default: #dddddd;
-  --border-strong: #c1c1c1;
-  --border-subtle: #ebebeb;
-  --surface-hover: rgba(0, 0, 0, 0.04);
-  --surface-active: rgba(0, 0, 0, 0.06);
-
-  /* Shadows – Airbnb three-layer system */
-  --shadow-card: rgba(0, 0, 0, 0.02) 0px 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 2px 6px, rgba(0, 0, 0, 0.08) 0px 4px 8px;
-  --shadow-hover: rgba(0, 0, 0, 0.08) 0px 4px 12px;
-  --shadow-elevated: rgba(0, 0, 0, 0.06) 0px 6px 20px;
-  --shadow-focus: 0 0 0 2px var(--brand-gold);
-
-  /* Radii – Airbnb scale */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
-  --radius-2xl: 32px;
-  --radius-full: 9999px;
-
-  /* Medal colors */
-  --medal-gold: #d4a843;
-  --medal-silver: #9ca3af;
-  --medal-bronze: #cd7f32;
-}
-
-/* Dark mode – FIFA navy palette */
-.dark {
-  --bg-primary: #0b0d17;
-  --bg-secondary: #141729;
-  --bg-tertiary: #1c2038;
-
-  --text-primary: rgba(255, 255, 255, 0.92);
-  --text-secondary: rgba(255, 255, 255, 0.64);
-  --text-tertiary: rgba(255, 255, 255, 0.40);
+  /* ─── Text (warm whites, never pure) ─── */
+  --text-primary: rgba(255, 255, 255, 0.96);
+  --text-secondary: rgba(255, 255, 255, 0.72);
+  --text-tertiary: rgba(255, 255, 255, 0.54);
   --text-disabled: rgba(255, 255, 255, 0.20);
-  --text-inverse: #222222;
+  --text-inverse: var(--green-950);
 
-  --brand-gold: #d4a843;
-  --brand-gold-hover: #f2d06b;
-  --brand-gold-light: #f2d06b;
-  --brand-gold-bg: rgba(212, 168, 67, 0.12);
-  --brand-gold-bg-strong: rgba(212, 168, 67, 0.20);
-
-  --border-default: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.14);
+  /* ─── Borders (graduated alpha) ─── */
+  --border-default: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.20);
   --border-subtle: rgba(255, 255, 255, 0.05);
   --surface-hover: rgba(255, 255, 255, 0.06);
   --surface-active: rgba(255, 255, 255, 0.10);
 
-  --shadow-card: rgba(0, 0, 0, 0.3) 0px 0px 0px 1px, rgba(0, 0, 0, 0.2) 0px 2px 6px, rgba(0, 0, 0, 0.3) 0px 4px 8px;
-  --shadow-hover: rgba(0, 0, 0, 0.4) 0px 4px 12px;
-  --shadow-elevated: rgba(0, 0, 0, 0.5) 0px 6px 20px;
+  /* ─── Brand aliases (legacy compatibility for existing components) ─── */
+  /* Old `brand-gold` tokens now resolve to electric yellow */
+  --brand-gold: var(--yellow-500);
+  --brand-gold-hover: var(--yellow-400);
+  --brand-gold-light: var(--yellow-400);
+  --brand-gold-bg: var(--yellow-bg);
+  --brand-gold-bg-strong: var(--yellow-bg-strong);
+
+  /* Old `fifa-*` tokens */
+  --fifa-blue: #58A7E0;
+  --fifa-blue-bg: rgba(88, 167, 224, 0.10);
+  --fifa-navy: var(--green-950);
+
+  /* Old semantic */
+  --success: var(--green-500);
+  --success-bg: rgba(16, 184, 110, 0.10);
+  --error: var(--live-red);
+  --error-bg: var(--live-red-bg);
+  --warning: var(--yellow-500);
+  --warning-bg: var(--yellow-bg);
+  --info: #58A7E0;
+
+  /* ─── Shadows (2-layer glow system) ─── */
+  --shadow-flat: none;
+  --shadow-card:
+    0 0 0 1px var(--border-default),
+    0 8px 24px -8px rgba(0, 0, 0, 0.55);
+  --shadow-hover:
+    0 0 0 1px var(--border-strong),
+    0 12px 32px -8px rgba(0, 0, 0, 0.7);
+  --shadow-elevated:
+    0 0 0 1px var(--border-default),
+    0 16px 48px -12px rgba(0, 0, 0, 0.8);
+  --shadow-glow-yellow:
+    0 0 0 1px var(--yellow-500),
+    0 0 24px var(--yellow-glow);
+  --shadow-glow-yellow-sm:
+    0 0 0 1px var(--yellow-500),
+    0 0 12px var(--yellow-glow);
+  --shadow-glow-green:
+    0 0 0 1px var(--green-500),
+    0 0 24px rgba(16, 184, 110, 0.30);
+  --shadow-glow-red:
+    0 0 0 1px var(--live-red),
+    0 0 20px var(--live-red-glow);
+  --shadow-focus: 0 0 0 2px var(--yellow-500), 0 0 0 4px rgba(255, 204, 0, 0.25);
+
+  /* ─── Radii (bet365-style tighter) ─── */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 32px;
+  --radius-full: 9999px;
+
+  /* ─── Medal colors (podium) ─── */
+  --medal-gold: var(--yellow-500);
+  --medal-silver: #C0C0C0;
+  --medal-bronze: #CD7F32;
+  --medal-gold-glow: rgba(255, 204, 0, 0.35);
+  --medal-silver-glow: rgba(192, 192, 192, 0.25);
+  --medal-bronze-glow: rgba(205, 127, 50, 0.30);
+}
+
+/* ─── Optional light mode override (retained for toggle) ─── */
+.light {
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F7F7F7;
+  --bg-tertiary: #EBEBEB;
+  --surface-0: #FFFFFF;
+  --surface-1: #F7F7F7;
+  --surface-2: #EBEBEB;
+  --surface-3: #DDDDDD;
+
+  --text-primary: #0A1F17;
+  --text-secondary: #3D4F46;
+  --text-tertiary: #6A7A70;
+  --text-disabled: rgba(10, 31, 23, 0.24);
+  --text-inverse: #FFFFFF;
+
+  --border-default: #D4DDD7;
+  --border-strong: #ABB9B1;
+  --border-subtle: #EBEFED;
+  --surface-hover: rgba(10, 31, 23, 0.04);
+  --surface-active: rgba(10, 31, 23, 0.08);
+
+  --brand-gold: var(--green-700);
+  --brand-gold-hover: var(--green-600);
+  --brand-gold-light: var(--green-500);
+  --brand-gold-bg: rgba(7, 99, 68, 0.08);
+  --brand-gold-bg-strong: rgba(7, 99, 68, 0.14);
+
+  --shadow-card:
+    0 0 0 1px rgba(0, 0, 0, 0.06),
+    0 8px 24px -8px rgba(0, 0, 0, 0.12);
+  --shadow-hover:
+    0 0 0 1px rgba(0, 0, 0, 0.10),
+    0 12px 32px -8px rgba(0, 0, 0, 0.18);
+  --shadow-elevated:
+    0 0 0 1px rgba(0, 0, 0, 0.08),
+    0 16px 48px -12px rgba(0, 0, 0, 0.20);
 }
 
 /* ─── Tailwind v4 @theme ─── */
 
 @theme inline {
+  /* Core palette */
+  --color-green-950: var(--green-950);
+  --color-green-900: var(--green-900);
+  --color-green-800: var(--green-800);
+  --color-green-700: var(--green-700);
+  --color-green-600: var(--green-600);
+  --color-green-500: var(--green-500);
+  --color-green-400: var(--green-400);
+
+  --color-yellow-400: var(--yellow-400);
+  --color-yellow-500: var(--yellow-500);
+  --color-yellow-600: var(--yellow-600);
+
+  --color-live-red: var(--live-red);
+
+  /* Semantic surfaces */
   --color-bg-primary: var(--bg-primary);
   --color-bg-secondary: var(--bg-secondary);
   --color-bg-tertiary: var(--bg-tertiary);
+  --color-surface-0: var(--surface-0);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
 
+  /* Text */
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-tertiary: var(--text-tertiary);
+  --color-text-inverse: var(--text-inverse);
 
-  --color-brand-gold: var(--brand-gold);
-  --color-brand-gold-hover: var(--brand-gold-hover);
-  --color-brand-gold-light: var(--brand-gold-light);
-  --color-brand-gold-bg: var(--brand-gold-bg);
-
-  --color-fifa-blue: var(--fifa-blue);
-  --color-fifa-blue-bg: var(--fifa-blue-bg);
-  --color-fifa-navy: var(--fifa-navy);
-
-  --color-success: var(--success);
-  --color-success-bg: var(--success-bg);
-  --color-error: var(--error);
-  --color-error-bg: var(--error-bg);
-  --color-warning: var(--warning);
-  --color-info: var(--info);
-
+  /* Borders / surfaces */
   --color-border-default: var(--border-default);
   --color-border-strong: var(--border-strong);
   --color-border-subtle: var(--border-subtle);
   --color-surface-hover: var(--surface-hover);
   --color-surface-active: var(--surface-active);
 
+  /* Status */
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
+  --color-error: var(--error);
+  --color-error-bg: var(--error-bg);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+  --color-up: var(--up);
+  --color-down: var(--down);
+
+  /* Legacy brand aliases */
+  --color-brand-gold: var(--brand-gold);
+  --color-brand-gold-hover: var(--brand-gold-hover);
+  --color-brand-gold-light: var(--brand-gold-light);
+  --color-brand-gold-bg: var(--brand-gold-bg);
+  --color-fifa-blue: var(--fifa-blue);
+  --color-fifa-blue-bg: var(--fifa-blue-bg);
+  --color-fifa-navy: var(--fifa-navy);
+
+  /* Medal */
   --color-medal-gold: var(--medal-gold);
   --color-medal-silver: var(--medal-silver);
   --color-medal-bronze: var(--medal-bronze);
 
+  /* Fonts */
   --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
 
+  /* Shadows */
   --shadow-card: var(--shadow-card);
   --shadow-hover: var(--shadow-hover);
   --shadow-elevated: var(--shadow-elevated);
+  --shadow-glow-yellow: var(--shadow-glow-yellow);
+  --shadow-glow-yellow-sm: var(--shadow-glow-yellow-sm);
+  --shadow-glow-green: var(--shadow-glow-green);
+  --shadow-glow-red: var(--shadow-glow-red);
   --shadow-focus: var(--shadow-focus);
 
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
   --radius-xl: 20px;
   --radius-2xl: 32px;
   --radius-full: 9999px;
@@ -151,26 +252,43 @@ body {
   background: var(--bg-primary);
   color: var(--text-primary);
   font-family: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 500;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(16, 184, 110, 0.06), transparent 40%),
+    radial-gradient(circle at 85% 100%, rgba(255, 204, 0, 0.04), transparent 40%);
+  background-attachment: fixed;
 }
 
-/* Heading letter-spacing – Airbnb tight tracking */
-h1, h2, h3 {
-  letter-spacing: -0.32px;
+.light body {
+  background-image: none;
 }
 
-h4, h5 {
-  letter-spacing: -0.18px;
+/* ─── Typography scale (bet365 bold display) ─── */
+h1, h2 {
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  line-height: 1.1;
+}
+h3, h4 {
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.1px;
 }
 
-/* Score/number font */
-.font-score {
+/* Score/number font — tabular mono */
+.font-score,
+.font-mono {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
   font-variant-numeric: tabular-nums;
 }
 
-/* Scrollbar styling for category pills */
+/* Scrollbar hide for category pills */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -179,70 +297,122 @@ h4, h5 {
   display: none;
 }
 
-/* Smooth transitions for theme switching */
+/* Smooth color transitions for theme switching */
 * {
-  transition-property: background-color, border-color, color;
+  transition-property: background-color, border-color, color, box-shadow;
   transition-duration: 150ms;
-  transition-timing-function: ease;
+  transition-timing-function: ease-out;
 }
 
-/* Disable transitions on page load */
 .no-transitions * {
   transition: none !important;
 }
 
-/* ─── Micro-animations ─── */
+/* ─── Animations ─── */
 
 @keyframes fade-in {
   from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slide-up {
   from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes scale-in {
   from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
-.animate-fade-in {
-  animation: fade-in 0.3s ease-out;
+/* Live pulse (for LIVE indicator dots) */
+@keyframes live-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(255, 59, 59, 0.6); }
+  70%  { box-shadow: 0 0 0 10px rgba(255, 59, 59, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 59, 59, 0); }
 }
 
-.animate-slide-up {
-  animation: slide-up 0.4s ease-out;
+/* Yellow CTA pulse glow */
+@keyframes glow-pulse-yellow {
+  0%, 100% { box-shadow: 0 0 0 1px var(--yellow-500), 0 0 16px rgba(255, 204, 0, 0.25); }
+  50%      { box-shadow: 0 0 0 1px var(--yellow-500), 0 0 32px rgba(255, 204, 0, 0.55); }
 }
 
-.animate-scale-in {
-  animation: scale-in 0.2s ease-out;
+/* Score / odds flash — for when a value updates */
+@keyframes flash-up {
+  0%   { background-color: rgba(16, 184, 110, 0); }
+  20%  { background-color: rgba(16, 184, 110, 0.35); }
+  100% { background-color: rgba(16, 184, 110, 0); }
 }
+@keyframes flash-down {
+  0%   { background-color: rgba(255, 107, 107, 0); }
+  20%  { background-color: rgba(255, 107, 107, 0.35); }
+  100% { background-color: rgba(255, 107, 107, 0); }
+}
+
+/* Horizontal marquee (live ticker, landing flag strip) */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Flip clock digit swap */
+@keyframes flip-in {
+  0%   { transform: rotateX(-90deg); opacity: 0; }
+  100% { transform: rotateX(0); opacity: 1; }
+}
+
+/* Shimmer for skeleton loaders */
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to   { background-position: 200% 0; }
+}
+
+.animate-fade-in    { animation: fade-in 0.3s ease-out; }
+.animate-slide-up   { animation: slide-up 0.4s ease-out; }
+.animate-scale-in   { animation: scale-in 0.25s ease-out; }
+.animate-live-pulse { animation: live-pulse 1.5s ease-out infinite; }
+.animate-glow-pulse { animation: glow-pulse-yellow 2.4s ease-in-out infinite; }
+.animate-flash-up   { animation: flash-up 0.8s ease-out; }
+.animate-flash-down { animation: flash-down 0.8s ease-out; }
+.animate-marquee    { animation: marquee 40s linear infinite; }
+.animate-flip-in    { animation: flip-in 0.5s ease-in-out; }
 
 /* Stagger children animation */
 .stagger-children > * {
   animation: fade-in 0.3s ease-out both;
 }
 .stagger-children > *:nth-child(1) { animation-delay: 0ms; }
-.stagger-children > *:nth-child(2) { animation-delay: 50ms; }
-.stagger-children > *:nth-child(3) { animation-delay: 100ms; }
-.stagger-children > *:nth-child(4) { animation-delay: 150ms; }
-.stagger-children > *:nth-child(5) { animation-delay: 200ms; }
-.stagger-children > *:nth-child(6) { animation-delay: 250ms; }
-.stagger-children > *:nth-child(7) { animation-delay: 300ms; }
-.stagger-children > *:nth-child(8) { animation-delay: 350ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 40ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 80ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 120ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 160ms; }
+.stagger-children > *:nth-child(6) { animation-delay: 200ms; }
+.stagger-children > *:nth-child(7) { animation-delay: 240ms; }
+.stagger-children > *:nth-child(8) { animation-delay: 280ms; }
 
 /* Button press effect */
 button:active:not(:disabled) {
   transform: scale(0.97);
 }
 
-/* Card hover lift (Airbnb pattern) */
+/* Card hover lift */
 .card-lift {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .card-lift:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-hover);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
