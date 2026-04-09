@@ -150,7 +150,7 @@ export default function LandingPage() {
               NYERJ.
             </span>
             <span className="block text-[48px] sm:text-[72px] lg:text-[92px] text-yellow-400 [text-shadow:0_0_40px_var(--yellow-glow)]">
-              BECSAPJ.
+              TAROLJ.
             </span>
           </h1>
 
