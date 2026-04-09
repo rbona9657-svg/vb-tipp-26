@@ -20,13 +20,13 @@ export function Header() {
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="/icon-48x48.png"
-            alt="VB Tipp '26"
+            alt="Ziccer Tipper"
             width={32}
             height={32}
             className="rounded-[6px]"
           />
           <span className="font-mono text-[15px] font-bold text-brand-gold hidden sm:inline">
-            VB Tipp &apos;26
+            Ziccer Tipper
           </span>
         </Link>
 

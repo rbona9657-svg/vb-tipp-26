@@ -68,13 +68,13 @@ export default function LandingPage() {
           <div className="flex items-center gap-2">
             <Image
               src="/icon-48x48.png"
-              alt="VB Tipp '26"
+              alt="Ziccer Tipper"
               width={32}
               height={32}
               className="rounded-[6px]"
             />
             <span className="font-mono text-[15px] font-bold text-brand-gold">
-              VB Tipp &apos;26
+              Ziccer Tipper
             </span>
           </div>
           <div className="flex items-center gap-3">
@@ -111,8 +111,8 @@ export default function LandingPage() {
 
           <div className="relative max-w-4xl mx-auto px-5 pt-16 pb-20 text-center">
             <Image
-              src="/images/logo.jpg"
-              alt="Original TrollFoci"
+              src="/images/logo.png"
+              alt="Ziccer - be kell rúgni"
               width={320}
               height={140}
               className="mx-auto mb-6 rounded-[var(--radius-lg)]"
@@ -455,13 +455,13 @@ export default function LandingPage() {
           <div className="flex items-center gap-2">
             <Image
               src="/icon-32x32.png"
-              alt="VB Tipp '26"
+              alt="Ziccer Tipper"
               width={20}
               height={20}
               className="rounded-[3px]"
             />
             <span className="text-[12px] font-bold tracking-[1.5px] text-text-tertiary">
-              VB TIPP &apos;26
+              ZICCER TIPPER
             </span>
           </div>
           <p className="text-[12px] text-text-tertiary">

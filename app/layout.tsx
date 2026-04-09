@@ -19,7 +19,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "VB Tipp '26 – Tippelj a Világbajnokságra",
+  title: "Ziccer Tipper – Tippelj a Világbajnokságra",
   description:
     "FIFA World Cup 2026 tippjáték – hozd létre a csapatodat, hívd meg a barátaidat és versenyezzetek!",
   manifest: "/manifest.json",
@@ -36,12 +36,12 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "VB Tipp '26",
+    title: "Ziccer Tipper",
   },
   openGraph: {
-    title: "VB Tipp '26 – Tippelj a Világbajnokságra",
+    title: "Ziccer Tipper – Tippelj a Világbajnokságra",
     description: "FIFA World Cup 2026 tippjáték – versenyezz a barátaiddal!",
-    images: [{ url: "/images/logo.jpg", width: 2048, height: 900 }],
+    images: [{ url: "/images/logo.png", width: 1640, height: 720 }],
     type: "website",
   },
 };
