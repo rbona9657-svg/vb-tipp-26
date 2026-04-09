@@ -22,15 +22,15 @@ export const metadata: Metadata = {
   title: "Ziccer Tipper – Tippelj a Világbajnokságra",
   description:
     "FIFA World Cup 2026 tippjáték – hozd létre a csapatodat, hívd meg a barátaidat és versenyezzetek!",
-  manifest: "/manifest.json",
+  manifest: "/manifest.json?v=ziccer2",
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "32x32" },
-      { url: "/icon-192x192.png", sizes: "192x192", type: "image/png" },
-      { url: "/icon-512x512.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico?v=ziccer2", sizes: "32x32" },
+      { url: "/icon-192x192.png?v=ziccer2", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512x512.png?v=ziccer2", sizes: "512x512", type: "image/png" },
     ],
     apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/apple-touch-icon.png?v=ziccer2", sizes: "180x180", type: "image/png" },
     ],
   },
   appleWebApp: {

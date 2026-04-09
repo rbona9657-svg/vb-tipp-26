@@ -67,11 +67,12 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto flex items-center justify-between px-5 h-14">
           <div className="flex items-center gap-2">
             <Image
-              src="/icon-48x48.png"
+              src="/icon-192x192.png?v=ziccer2"
               alt="Ziccer Tipper"
               width={32}
               height={32}
               className="rounded-[6px]"
+              unoptimized
             />
             <span className="font-mono text-[15px] font-bold text-brand-gold">
               Ziccer Tipper
@@ -454,11 +455,12 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto px-5 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <Image
-              src="/icon-32x32.png"
+              src="/icon-192x192.png?v=ziccer2"
               alt="Ziccer Tipper"
               width={20}
               height={20}
               className="rounded-[3px]"
+              unoptimized
             />
             <span className="text-[12px] font-bold tracking-[1.5px] text-text-tertiary">
               ZICCER TIPPER
