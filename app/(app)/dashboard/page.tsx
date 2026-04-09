@@ -2,19 +2,20 @@
 
 import { Trophy, ArrowRight, Calendar } from "lucide-react";
 import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Avatar } from "@/components/ui/avatar";
+import { Card } from "@/components/ui/card";
 import { FlipCountdown } from "@/components/ui/flip-countdown";
 import { LiveDot } from "@/components/ui/live-dot";
 import { MatchCard } from "@/components/ui/match-card";
+import { Podium } from "@/components/ui/podium";
 import { MATCHES, SQUAD_MEMBERS } from "@/lib/data";
+import type { Player } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
 const KICKOFF = new Date("2026-06-11T19:00:00Z");
 
 export default function DashboardPage() {
   const nextMatches = MATCHES.slice(0, 3);
-  const topPlayers = SQUAD_MEMBERS.slice(0, 3);
+  const topPlayers = SQUAD_MEMBERS.slice(0, 3) as [Player, Player, Player];
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-6 space-y-6">
@@ -51,14 +52,26 @@ export default function DashboardPage() {
 
       {/* Section: Next matches */}
       <section>
-        <div className="flex items-center justify-between mb-3">
-          <h2 className="text-[18px] font-bold text-text-primary">Következő meccsek</h2>
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h2 className="font-display font-black text-[20px] tracking-tight text-text-primary">
+              Következő meccsek
+            </h2>
+            <p className="text-[11px] text-text-tertiary font-medium mt-0.5 uppercase tracking-[0.6px]">
+              Tippeld meg és gyűjtsd a pontokat
+            </p>
+          </div>
           <Link
             href="/matches"
-            className="flex items-center gap-1 text-[13px] font-semibold text-brand-gold hover:text-brand-gold-hover transition-colors"
+            className={cn(
+              "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[var(--radius-sm)]",
+              "font-display font-bold text-[11px] uppercase tracking-[0.6px]",
+              "text-yellow-400 hover:text-yellow-500 hover:bg-yellow-bg",
+              "transition-colors"
+            )}
           >
             Összes
-            <ArrowRight className="w-3.5 h-3.5" />
+            <ArrowRight className="w-3 h-3" />
           </Link>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 stagger-children">
@@ -68,59 +81,50 @@ export default function DashboardPage() {
         </div>
       </section>
 
-      {/* Section: Mini leaderboard */}
+      {/* Section: Top 3 podium */}
       <section>
-        <div className="flex items-center justify-between mb-3">
-          <h2 className="text-[18px] font-bold text-text-primary">Ranglista</h2>
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h2 className="font-display font-black text-[20px] tracking-tight text-text-primary">
+              Csapat ranglista
+            </h2>
+            <p className="text-[11px] text-text-tertiary font-medium mt-0.5 uppercase tracking-[0.6px]">
+              Dobogó &middot; élő
+            </p>
+          </div>
           <Link
             href="/leaderboard"
-            className="flex items-center gap-1 text-[13px] font-semibold text-brand-gold hover:text-brand-gold-hover transition-colors"
+            className={cn(
+              "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[var(--radius-sm)]",
+              "font-display font-bold text-[11px] uppercase tracking-[0.6px]",
+              "text-yellow-400 hover:text-yellow-500 hover:bg-yellow-bg",
+              "transition-colors"
+            )}
           >
             Teljes lista
-            <ArrowRight className="w-3.5 h-3.5" />
+            <ArrowRight className="w-3 h-3" />
           </Link>
         </div>
-        <Card>
-          <CardContent className="p-0">
-            {topPlayers.map((player, i) => (
-              <div
-                key={player.id}
-                className="flex items-center gap-3 px-5 py-3 border-b border-border-subtle last:border-b-0"
-              >
-                <span className="w-6 text-center font-mono font-bold text-[14px] text-medal-gold">
-                  {i + 1}
-                </span>
-                <Avatar initials={player.avatar} size="sm" rank={i + 1} />
-                <div className="flex-1 min-w-0">
-                  <p className="text-[14px] font-semibold text-text-primary truncate">
-                    {player.name}
-                  </p>
-                </div>
-                <span className="font-mono font-bold text-[15px] text-text-primary">
-                  {player.pts}
-                </span>
-                <Badge variant="gold">pts</Badge>
-              </div>
-            ))}
-          </CardContent>
-        </Card>
+        <Podium players={topPlayers} />
       </section>
 
       {/* Quick stats */}
       <div className="grid grid-cols-3 gap-3">
         {[
-          { label: "Meccsek", value: "48+", icon: <Calendar className="w-4 h-4" /> },
-          { label: "Csapatok", value: "24", icon: <span className="text-[14px]">🏴</span> },
-          { label: "Helyszínek", value: "16", icon: <span className="text-[14px]">🏟️</span> },
+          { label: "Meccs", value: "104", icon: <Calendar className="w-4 h-4 text-yellow-400" /> },
+          { label: "Csapat", value: "48", icon: <span className="text-[14px]">🏴</span> },
+          { label: "Helyszín", value: "16", icon: <span className="text-[14px]">🏟️</span> },
         ].map((stat) => (
-          <Card key={stat.label}>
-            <CardContent className="flex flex-col items-center py-4 text-center">
-              <span className="mb-1">{stat.icon}</span>
-              <span className="font-mono font-bold text-[20px] text-text-primary">
+          <Card key={stat.label} padding="md">
+            <div className="flex flex-col items-center text-center gap-1">
+              <span>{stat.icon}</span>
+              <span className="font-mono font-black text-[24px] text-yellow-400 tabular-nums [text-shadow:0_0_12px_var(--yellow-glow)] leading-none">
                 {stat.value}
               </span>
-              <span className="text-[11px] text-text-tertiary font-medium">{stat.label}</span>
-            </CardContent>
+              <span className="text-[9px] text-text-tertiary font-bold uppercase tracking-[0.8px]">
+                {stat.label}
+              </span>
+            </div>
           </Card>
         ))}
       </div>
