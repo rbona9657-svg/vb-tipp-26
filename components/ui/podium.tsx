@@ -143,7 +143,12 @@ function PodiumCard({ player, rank, tall = false }: PodiumCardProps) {
 export function Podium({ players, className }: PodiumProps) {
   const [first, second, third] = players;
   return (
-    <div className={cn("grid grid-cols-3 gap-3 items-end", className)}>
+    <div
+      className={cn(
+        "grid grid-cols-3 gap-3 items-end stagger-children",
+        className
+      )}
+    >
       <PodiumCard player={second} rank={2} />
       <PodiumCard player={first} rank={1} tall />
       <PodiumCard player={third} rank={3} />

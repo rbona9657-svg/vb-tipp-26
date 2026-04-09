@@ -84,18 +84,20 @@ export default function LeaderboardPage() {
                 Pont
               </span>
             </div>
-            {rest.map((player, i) => (
-              <LeaderboardRow
-                key={player.id}
-                player={player}
-                rank={i + 4}
-                highlighted={player.id === CURRENT_USER_ID}
-              />
-            ))}
+            <div className="stagger-children">
+              {rest.map((player, i) => (
+                <LeaderboardRow
+                  key={player.id}
+                  player={player}
+                  rank={i + 4}
+                  highlighted={player.id === CURRENT_USER_ID}
+                />
+              ))}
+            </div>
           </Card>
         </>
       ) : (
-        <div className="space-y-3">
+        <div className="space-y-3 stagger-children">
           {RIVAL_SQUADS.map((squad) => {
             const isTop = squad.rank <= 3;
             const rankColors: Record<number, string> = {
