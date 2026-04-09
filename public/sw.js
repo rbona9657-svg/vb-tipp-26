@@ -1,31 +1,30 @@
-const CACHE_NAME = "vb-tipp-26-v4";
+// Self-destructing service worker.
+// Previous versions cached aggressively and trapped PWAs on stale content.
+// This version unregisters itself and clears all caches on activation.
 
 self.addEventListener("install", (event) => {
-  // Skip waiting to activate immediately
   self.skipWaiting();
 });
 
 self.addEventListener("activate", (event) => {
-  // Delete ALL old caches
   event.waitUntil(
-    caches.keys().then((names) =>
-      Promise.all(names.map((name) => caches.delete(name)))
-    ).then(() => self.clients.claim())
+    (async () => {
+      // Delete every cache
+      const cacheNames = await caches.keys();
+      await Promise.all(cacheNames.map((name) => caches.delete(name)));
+
+      // Unregister this service worker entirely
+      await self.registration.unregister();
+
+      // Force all open clients to reload so they pick up fresh content
+      const clients = await self.clients.matchAll({ type: "window" });
+      for (const client of clients) {
+        if ("navigate" in client) {
+          client.navigate(client.url);
+        }
+      }
+    })()
   );
 });
 
-self.addEventListener("fetch", (event) => {
-  // Network-first for everything — always get fresh content
-  event.respondWith(
-    fetch(event.request)
-      .then((response) => {
-        // Cache successful responses for offline fallback
-        if (response.ok && event.request.method === "GET") {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
-        }
-        return response;
-      })
-      .catch(() => caches.match(event.request))
-  );
-});
+// No fetch handler — all requests go straight to the network.
