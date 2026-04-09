@@ -19,7 +19,7 @@ export function Header() {
         {/* Brand */}
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/icon-192x192.png?v=ziccer2"
+            src="/icon-192x192.png?v=ziccer3"
             alt="Ziccer Tipper"
             width={32}
             height={32}

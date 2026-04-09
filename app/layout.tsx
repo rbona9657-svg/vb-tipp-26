@@ -22,15 +22,15 @@ export const metadata: Metadata = {
   title: "Ziccer Tipper – Tippelj a Világbajnokságra",
   description:
     "FIFA World Cup 2026 tippjáték – hozd létre a csapatodat, hívd meg a barátaidat és versenyezzetek!",
-  manifest: "/manifest.json?v=ziccer2",
+  manifest: "/manifest.json?v=ziccer3",
   icons: {
     icon: [
-      { url: "/favicon.ico?v=ziccer2", sizes: "32x32" },
-      { url: "/icon-192x192.png?v=ziccer2", sizes: "192x192", type: "image/png" },
-      { url: "/icon-512x512.png?v=ziccer2", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico?v=ziccer3", sizes: "32x32" },
+      { url: "/icon-192x192.png?v=ziccer3", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512x512.png?v=ziccer3", sizes: "512x512", type: "image/png" },
     ],
     apple: [
-      { url: "/apple-touch-icon.png?v=ziccer2", sizes: "180x180", type: "image/png" },
+      { url: "/apple-touch-icon.png?v=ziccer3", sizes: "180x180", type: "image/png" },
     ],
   },
   appleWebApp: {
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ziccer Tipper – Tippelj a Világbajnokságra",
     description: "FIFA World Cup 2026 tippjáték – versenyezz a barátaiddal!",
-    images: [{ url: "/images/logo.png", width: 1640, height: 720 }],
+    images: [{ url: "/images/logo.png", width: 192, height: 192 }],
     type: "website",
   },
 };
