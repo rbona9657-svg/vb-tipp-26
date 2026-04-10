@@ -72,10 +72,10 @@ export function MatchCard({ match }: MatchCardProps) {
 
       {/* ─── Teams row ─── */}
       <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 px-5 py-4 border-y border-border-subtle">
-        <div className="flex items-start gap-3 min-w-0">
-          <span className="text-2xl shrink-0 mt-0.5">{home.flag}</span>
+        <div className="flex items-start gap-2 sm:gap-3 min-w-0">
+          <span className="text-xl sm:text-2xl shrink-0 mt-0.5">{home.flag}</span>
           <div className="min-w-0">
-            <p className="font-display font-bold text-[15px] text-text-primary leading-tight">
+            <p className="font-display font-bold text-[13px] sm:text-[15px] text-text-primary leading-tight break-words">
               {home.name}
             </p>
             <p className="font-mono text-[10px] text-text-tertiary font-bold tracking-wider">
@@ -94,16 +94,16 @@ export function MatchCard({ match }: MatchCardProps) {
           <div className="font-mono font-bold text-[13px] text-text-tertiary px-3">VS</div>
         )}
 
-        <div className="flex items-start gap-3 justify-end min-w-0">
+        <div className="flex items-start gap-2 sm:gap-3 justify-end min-w-0">
           <div className="min-w-0 text-right">
-            <p className="font-display font-bold text-[15px] text-text-primary leading-tight">
+            <p className="font-display font-bold text-[13px] sm:text-[15px] text-text-primary leading-tight break-words">
               {away.name}
             </p>
             <p className="font-mono text-[10px] text-text-tertiary font-bold tracking-wider">
               {match.away}
             </p>
           </div>
-          <span className="text-2xl shrink-0 mt-0.5">{away.flag}</span>
+          <span className="text-xl sm:text-2xl shrink-0 mt-0.5">{away.flag}</span>
         </div>
       </div>
 
