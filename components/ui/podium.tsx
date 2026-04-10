@@ -56,7 +56,7 @@ function PodiumCard({ player, rank, tall = false }: PodiumCardProps) {
   return (
     <div
       className={cn(
-        "relative rounded-[var(--radius-lg)] bg-bg-secondary border overflow-hidden",
+        "relative rounded-[var(--radius-lg)] bg-bg-secondary border",
         "transition-transform duration-200 hover:-translate-y-1",
         cfg.border,
         cfg.shadow,
