@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
-import { users, squads, squadMembers } from "@/drizzle/schema";
+import { users, squads, squadMembers, leaderboard } from "@/drizzle/schema";
 
 function generateInviteCode(): string {
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -52,6 +52,12 @@ export async function POST(request: Request) {
       userId: user.id,
       role: "admin",
     });
+
+    // Create leaderboard entry so user appears in rankings
+    await db
+      .insert(leaderboard)
+      .values({ userId: user.id, squadId: squad.id })
+      .onConflictDoNothing();
 
     return NextResponse.json({
       success: true,

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
-import { matchPredictions } from "@/drizzle/schema";
+import { matchPredictions, matches, squadMembers, leaderboard } from "@/drizzle/schema";
 import { and, eq } from "drizzle-orm";
 
 export async function POST(request: Request) {
@@ -15,9 +15,40 @@ export async function POST(request: Request) {
       );
     }
 
-    // Check if 24h+ before kickoff for early bird bonus
-    const isEarlyBird = false; // TODO: compare with match kickoff time
+    // ─── Kickoff lockout: block predictions after match starts ─────
+    const [match] = await db
+      .select({ kickoffAt: matches.kickoffAt, status: matches.status })
+      .from(matches)
+      .where(eq(matches.id, matchId))
+      .limit(1);
 
+    if (!match) {
+      return NextResponse.json(
+        { error: "Match not found" },
+        { status: 404 }
+      );
+    }
+
+    if (match.status === "live" || match.status === "finished") {
+      return NextResponse.json(
+        { error: "A meccs már elkezdődött, nem lehet tippelni" },
+        { status: 403 }
+      );
+    }
+
+    if (match.kickoffAt && new Date() >= new Date(match.kickoffAt)) {
+      return NextResponse.json(
+        { error: "A meccs már elkezdődött, nem lehet tippelni" },
+        { status: 403 }
+      );
+    }
+
+    // ─── Early bird bonus: 24h+ before kickoff ────────────────────
+    const isEarlyBird =
+      match.kickoffAt != null &&
+      new Date(match.kickoffAt).getTime() - Date.now() > 24 * 60 * 60 * 1000;
+
+    // ─── Save prediction ──────────────────────────────────────────
     const result = await db
       .insert(matchPredictions)
       .values({
@@ -38,10 +69,24 @@ export async function POST(request: Request) {
           awayScore,
           totalCorners,
           totalYellows,
+          isEarlyBird,
           submittedAt: new Date(),
         },
       })
       .returning();
+
+    // ─── Ensure leaderboard row exists for user in all squads ─────
+    const userSquads = await db
+      .select({ squadId: squadMembers.squadId })
+      .from(squadMembers)
+      .where(eq(squadMembers.userId, userId));
+
+    for (const { squadId } of userSquads) {
+      await db
+        .insert(leaderboard)
+        .values({ userId, squadId })
+        .onConflictDoNothing();
+    }
 
     return NextResponse.json(result[0]);
   } catch (error) {
