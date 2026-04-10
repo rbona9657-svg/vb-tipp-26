@@ -19,6 +19,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://tipp.passportpub.hu"),
   title: "Ziccer Tipper – Tippelj a Világbajnokságra",
   description:
     "FIFA World Cup 2026 tippjáték – hozd létre a csapatodat, hívd meg a barátaidat és versenyezzetek!",
@@ -41,6 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ziccer Tipper – Tippelj a Világbajnokságra",
     description: "FIFA World Cup 2026 tippjáték – versenyezz a barátaiddal!",
+    url: "https://tipp.passportpub.hu",
     images: [{ url: "/images/logo.png", width: 192, height: 192 }],
     type: "website",
   },

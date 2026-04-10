@@ -3,6 +3,8 @@
   "short_name": "Ziccer Tipper",
   "description": "FIFA World Cup 2026 tippjáték – versenyezz a barátaiddal!",
   "start_url": "/dashboard",
+  "scope": "/",
+  "id": "https://tipp.passportpub.hu/",
   "display": "standalone",
   "background_color": "#021912",
   "theme_color": "#021912",
