@@ -7,6 +7,7 @@ import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Avatar } from "./avatar";
 import { LiveDot } from "./live-dot";
+import { MATCHES, TEAMS } from "@/lib/data";
 
 /**
  * Sticky app header — bet365-inspired.
@@ -24,18 +25,36 @@ interface TickerItem {
   info?: string;
 }
 
-// Placeholder ticker items — will be swapped for live DB data in later phases.
-const TICKER_ITEMS: TickerItem[] = [
-  { id: 1, home: { code: "MEX", flag: "🇲🇽" }, away: { code: "RSA", flag: "🇿🇦" }, status: "upcoming", info: "Jún 11 · 21:00" },
-  { id: 2, home: { code: "HUN", flag: "🇭🇺" }, away: { code: "URU", flag: "🇺🇾" }, status: "upcoming", info: "Jún 13 · 21:00" },
-  { id: 3, home: { code: "USA", flag: "🇺🇸" }, away: { code: "PAR", flag: "🇵🇾" }, status: "upcoming", info: "Jún 13 · 03:00" },
-  { id: 4, home: { code: "BRA", flag: "🇧🇷" }, away: { code: "MAR", flag: "🇲🇦" }, status: "upcoming", info: "Jún 14 · 00:00" },
-  { id: 5, home: { code: "ESP", flag: "🇪🇸" }, away: { code: "CPV", flag: "🇨🇻" }, status: "upcoming", info: "Jún 15 · 18:00" },
-  { id: 6, home: { code: "FRA", flag: "🇫🇷" }, away: { code: "SEN", flag: "🇸🇳" }, status: "upcoming", info: "Jún 16 · 21:00" },
-  { id: 7, home: { code: "ARG", flag: "🇦🇷" }, away: { code: "ALG", flag: "🇩🇿" }, status: "upcoming", info: "Jún 17 · 03:00" },
-  { id: 8, home: { code: "POR", flag: "🇵🇹" }, away: { code: "COD", flag: "🇨🇩" }, status: "upcoming", info: "Jún 17 · 19:00" },
-  { id: 9, home: { code: "ENG", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿" }, away: { code: "CRO", flag: "🇭🇷" }, status: "upcoming", info: "Jún 17 · 22:00" },
-];
+/** Build ticker from real match data — first 15 matches chronologically. */
+function buildTickerItems(): TickerItem[] {
+  return MATCHES
+    .slice()
+    .sort((a, b) => {
+      const dayA = parseInt(a.date.split(" ")[1]);
+      const dayB = parseInt(b.date.split(" ")[1]);
+      if (dayA !== dayB) return dayA - dayB;
+      return a.time.localeCompare(b.time);
+    })
+    .slice(0, 15)
+    .map((match) => ({
+      id: match.id,
+      home: { code: match.home, flag: TEAMS[match.home]?.flag ?? "" },
+      away: { code: match.away, flag: TEAMS[match.away]?.flag ?? "" },
+      status:
+        match.status === "live"
+          ? ("live" as const)
+          : match.status === "finished"
+            ? ("final" as const)
+            : ("upcoming" as const),
+      score:
+        match.homeScore != null && match.awayScore != null
+          ? `${match.homeScore}–${match.awayScore}`
+          : undefined,
+      info: `${match.date} · ${match.time}`,
+    }));
+}
+
+const TICKER_ITEMS = buildTickerItems();
 
 function TickerItemView({ item }: { item: TickerItem }) {
   return (
