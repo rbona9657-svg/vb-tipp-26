@@ -138,7 +138,7 @@ export function Header() {
             </span>
           </div>
           <div className="flex-1 overflow-hidden relative">
-            <div className="flex items-center gap-8 animate-marquee will-change-transform">
+            <div className="flex items-center gap-8 animate-marquee will-change-transform w-max">
               {tickerLoop.map((item, i) => (
                 <TickerItemView key={`${item.id}-${i}`} item={item} />
               ))}
