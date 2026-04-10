@@ -131,12 +131,6 @@ export function Header() {
       {/* ─── Ticker row (only on app pages, scroll loop) ─── */}
       <div className="border-t border-border-subtle bg-surface-1/60 overflow-hidden">
         <div className="max-w-6xl mx-auto flex items-center gap-4 h-9 px-4">
-          <div className="flex items-center gap-1.5 shrink-0">
-            <LiveDot variant="red" size="xs" />
-            <span className="font-display font-extrabold text-[10px] uppercase tracking-[0.8px] text-live-red">
-              Ticker
-            </span>
-          </div>
           <div className="flex-1 overflow-hidden relative">
             <div className="flex items-center gap-8 animate-marquee will-change-transform w-max">
               {tickerLoop.map((item, i) => (
