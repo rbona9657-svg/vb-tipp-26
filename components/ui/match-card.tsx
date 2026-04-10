@@ -75,7 +75,7 @@ export function MatchCard({ match }: MatchCardProps) {
         <div className="flex items-center gap-3 min-w-0">
           <span className="text-2xl shrink-0">{home.flag}</span>
           <div className="min-w-0">
-            <p className="font-display font-bold text-[15px] text-text-primary leading-tight truncate">
+            <p className="font-display font-bold text-[15px] text-text-primary leading-tight">
               {home.name}
             </p>
             <p className="font-mono text-[10px] text-text-tertiary font-bold tracking-wider">
@@ -96,7 +96,7 @@ export function MatchCard({ match }: MatchCardProps) {
 
         <div className="flex items-center gap-3 justify-end min-w-0">
           <div className="min-w-0 text-right">
-            <p className="font-display font-bold text-[15px] text-text-primary leading-tight truncate">
+            <p className="font-display font-bold text-[15px] text-text-primary leading-tight">
               {away.name}
             </p>
             <p className="font-mono text-[10px] text-text-tertiary font-bold tracking-wider">
