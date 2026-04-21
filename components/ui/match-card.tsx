@@ -71,11 +71,11 @@ export function MatchCard({ match }: MatchCardProps) {
       </div>
 
       {/* ─── Teams row ─── */}
-      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 sm:gap-3 px-5 py-4 border-y border-border-subtle">
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 px-5 py-4 border-y border-border-subtle">
         {/* Home */}
-        <div className="flex flex-col items-center sm:flex-row sm:items-start sm:gap-3 min-w-0">
-          <span className="text-2xl sm:text-2xl shrink-0">{home.flag}</span>
-          <div className="min-w-0 text-center sm:text-left">
+        <div className="flex flex-col items-center min-w-0">
+          <span className="text-2xl shrink-0">{home.flag}</span>
+          <div className="min-w-0 text-center">
             <p className="font-display font-bold text-[13px] sm:text-[15px] text-text-primary leading-tight">
               {home.name}
             </p>
@@ -96,9 +96,9 @@ export function MatchCard({ match }: MatchCardProps) {
         )}
 
         {/* Away */}
-        <div className="flex flex-col items-center sm:flex-row-reverse sm:items-start sm:gap-3 min-w-0">
-          <span className="text-2xl sm:text-2xl shrink-0">{away.flag}</span>
-          <div className="min-w-0 text-center sm:text-right">
+        <div className="flex flex-col items-center min-w-0">
+          <span className="text-2xl shrink-0">{away.flag}</span>
+          <div className="min-w-0 text-center">
             <p className="font-display font-bold text-[13px] sm:text-[15px] text-text-primary leading-tight">
               {away.name}
             </p>
